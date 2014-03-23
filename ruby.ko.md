@@ -12,7 +12,9 @@
 
 <a name="ruby-version"></a>
 
-## 루비(Ruby) 버전- **[SHOULD]** 루비 2.0 이상의 버전을 사용하는 프로젝트에서는 키워드 인수, 심볼 리터럴(`%i`)을 비롯한 루비 2.0에서 추가된 기능을 적극 활용한다.
+## 루비(Ruby) 버전
+
+- **[SHOULD]** 루비 2.0 이상의 버전을 사용하는 프로젝트에서는 키워드 인수, 심볼 리터럴(`%i`)을 비롯한 루비 2.0에서 추가된 기능을 적극 활용한다.
 
 <a name="indentation"></a>
 
@@ -35,27 +37,38 @@ other_scope(bar)
 some_scope(foo).
 other_scope(bar)```
 
+<a name="whitespaces"></a>
 
-<a name="whitespaces"></a>## 공백
+## 공백
 
 - **[MUST]** 줄 마지막에 공백을 넣지 않는다.
 
-<a name="empty-lines"></a>## 빈 행
+<a name="empty-lines"></a>
+
+## 빈 행
 
 - **[MUST]** 파일 마지막에 빈 행을 넣지 않는다.
 
-<a name="character-encoding-and-magic-comments"></a>## 문자 인코딩과 매직 코멘트- **[MUST]** 특별한 이유가 없다면 인코딩은 UTF-8을 사용한다.
+<a name="character-encoding-and-magic-comments"></a>
+
+## 문자 인코딩과 매직 코멘트
+
+- **[MUST]** 특별한 이유가 없다면 인코딩은 UTF-8을 사용한다.
 - **[SHOULD]** 루비 2.0 부터 기본 인코딩이 UTF-8이므로 인코딩 지정을 위한 별도의 매직 코멘트는 사용하지 않는다.
 - **[MUST]** 매직 코멘트를 사용해야 할 때는 아래 형식을 사용한다.
 
     ```ruby# coding: utf-8```
 
-<a name="line-columns"></a>## 한 줄의 글자수 제한
+<a name="line-columns"></a>
+
+## 한 줄의 글자수 제한
 
 - **[SHOULD]** 특별한 이유가 없다면 한 줄은 80자 이하로 작성한다. 이 때 전각 문자는 2글자로 계산한다.
 - **[MUST]** 어떠한 경우에도 한 줄은 128자 이하로 작성한다.
 
-<a name="numbers"></a>## 숫자
+<a name="numbers"></a>
+
+## 숫자
 
 - **[SHOULD]** 자리수가 큰 10진수 숫자 리터럴을 사용할 때는 읽기 좋게 3자리마다 밑줄을 넣는다.
 - 예: `1_000_000.001_023`- **[SHOULD]** 자리수가 큰 2진수나 16진수를 사용할 때는 읽기 좋게 4자리마다 밑줄을 넣는다.
@@ -65,7 +78,9 @@ other_scope(bar)```
 - 예: `1.quo(2) #=> (1/2)`- **[SHOULD]** Ruby 2.1 이후 버전을 사용한다면 복수소 표현은 `i`나 `ri` 접미사를 사용한다.
 - 예: `1 + 2i #=> (1+2i)`
 
-<a name="strings"></a>## 문자열
+<a name="strings"></a>
+
+## 문자열
 
 - **[SHOULD]** 빈문자열은 `''`을 사용한다.
 - **[SHOULD]** 특별한 이유가 없다면 `String.new` 메소드로 문자열을 생성하지 않는다.
@@ -80,13 +95,17 @@ other_scope(bar)```
 - **[SHOULD]** 문자열 리터럴들을 `String#+` 메소드를 사용해서 연결하지 않는다.문자열 보간법을 사용한다.
 - **[MUST]** 문자열에 파괴적인 연결 연산자인 `+=`를 사용하지 않는다.`String#<<` 메소드나 `String#concat` 메소드를 사용한다.
 
-<a name="regular-expressions"></a>## 정규표현식
+<a name="regular-expressions"></a>
+
+## 정규표현식
 
 - **[SHOULD]** 역참조하지 않는 그룹은 지정하지 않는다.캡쳐되지 않는 `(?: ... )` 그룹를 사용할 것.
 - **[SHOULD]** 복잡한 정규표현식을 사용할 때는 `x` 옵션을 사용해 줄바꿈, 공백, 주석 (`(?# ... )`)을 활용해 가독성을 높인다.
 - 자세한 예는 [uri/common.rb 에 정의된 정규표현식](https://github.com/ruby/ruby/blob/trunk/lib/uri/common.rb#L457)을 참조.
 
-<a name="arrays"></a>## 배열
+<a name="arrays"></a>
+
+## 배열
 
 - **[MUST]** 배열 리터럴을 여러 줄로 작성할 때는 `[`와 첫번째 요소 사이에 하나의 공백을 두고 요소들의 들여쓰기를 맞춘다.
 
@@ -120,7 +139,9 @@ other_scope(bar)```
 
     # bad(1..10).to_a  #=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]```
 
-<a name="hashes"></a>## 해시
+<a name="hashes"></a>
+
+## 해시
 
 - **[MUST]** 해시 리터럴을 한 줄에 작성할 때는 `{` 와 첫번째 요소 사이와 마지막 요소와 `}` 사이에 각각 하나의 공백을 넣는다.
 
@@ -178,12 +199,16 @@ other_scope(bar)```
 
     # badfizzbuzz = n % 3 == 0 ?(n % 5 == 0 ?'fizzbuzz' : 'fizz') :(n % 5 == 0 ?'buzz' : "#{n}")```
 
-<a name="assignments"></a>## 대입식
+<a name="assignments"></a>
+
+## 대입식
 
 - **[MUST]** - **[MUST]** 대입 기호(=) 양쪽에는 공백을 넣는다.
 - **[MUST]** 대입식에 조건식을 사용하지 않는다.
 
-<a name="control-structures"></a>## 제어구조
+<a name="control-structures"></a>
+
+## 제어구조
 
 - **[SHOULD]** `if !condition` 대신 `unless condition`을 사용한다.
 - **[SHOULD]** `while !condition` 대신 `until condition`을 사용한다.
@@ -208,7 +233,9 @@ other_scope(bar)```
 - **[MUST]** return, next, break가  의미 있는 값을 리턴하지 않을 때는, 각 키워드 뒤에 어떤 식도 작성하지 않는다.
 - 단 컨트롤러의 액션에서 redirect_to나 render와 같은 계속 처리를 선언하는 메소드는 return이나 next 뒤에서 호출해도 무방하다.
 
-<a name="method-calls"></a>## 메소드 호출
+<a name="method-calls"></a>
+
+## 메소드 호출
 
 - **[MUST]** 메소드 호출 시 괄호는  경우를 제외하고는 생략하지 않는다.
 - **[MUST]** 인수가 없는 메소드를 호출할 때는 괄호를 생략한다.
@@ -276,11 +303,15 @@ other_scope(bar)```
 
       ```rubyActionMailer::Base.delivery_method :smtp,host: 'localhost',port: 25```
 
-<a name="begin-and-end"></a>## BEGIN과 END
+<a name="begin-and-end"></a>
+
+## BEGIN과 END
 
 - **[MUST]** `BEGIN` 블록과 `END` 블록은 사용하지 않는다.
 
-<a name="module-and-class-definitions"></a>## 모듈과 클래스 정의
+<a name="module-and-class-definitions"></a>
+
+## 모듈과 클래스 정의
 
 - **[MUST]** 메소드에 별칭을 붙일 때는 `alias`를 사용하지 말고 `alias_method`를 사용한다.
 - **[MUST]** `attr`을 사용하지 말고 `attr_accessor`, `attr_reader`, `attr_writer`을 사용한다.
@@ -333,7 +364,9 @@ other_scope(bar)```
 - **[MUST]** 문서화는 [TomDoc](http://tomdoc.org/) 포맷을 따른다.
 - **[MUST]** 하나의 클래스를 여러가지 목적으로 사용하지 않는다.
 
-<a name="method-definitions"></a>## 메소드 정의
+<a name="method-definitions"></a>
+
+## 메소드 정의
 
 - **[MUST]** 메소드를 정의할 때 인수 리스트의 괄호는 생략하지 않는다.인수가 없는 메소드를 정의할 때는 괄호를 사용하지 않는다.
 - **[MUST]** 메소드와 인수 리스트의 괄호 사이에는 공백을 넣지 않는다.
@@ -347,7 +380,9 @@ other_scope(bar)```
 
     # baddef your_method(str)str.sub!('xxx', 'yyy')end```
 
-<a name="variables"></a>## 변수
+<a name="variables"></a>
+
+## 변수
 
 - **[MUST]** 글로별 변수를 (`$foo`) 임의로 정의하지 않는다.
 - **[MUST]** 클래스 변수(`@@foo`)를 사용하지 않는다. 클래스 변수 대신 `class_attribute`를 사용한다.
@@ -357,4 +392,4 @@ other_scope(bar)```
 
 ## 이 외(분류하기 어려운 규칙)
 
-- **[MUST]** 파괴적인 메소드를 사용할 때는 그 영향 범위를 최소한으로 만든다.
+- **[MUST]** 파괴적인 메소드를 사용할 때는 그 영향 범위를 최소한으로 한정한다.
