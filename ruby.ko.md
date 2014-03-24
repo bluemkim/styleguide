@@ -23,13 +23,13 @@
 - **[MUST]** 한 단계의 들여쓰기는 두 번의 스페이스를 사용한다.들여쓰기에 탭을 사용하지 않는다.
 - **[MUST]** 메소드 체인이 길어진 상황에서 마지막 메소드에 블록을 넘겨야한다면, 마지막 메소드를 받는 리시버를 별도의 로컬 변수에 대입하고 이 변수에 메소드를 호출하면서 블록을 넘겨준다.
 
-    ```ruby# goodposts = Post.joins(:user).merge(User.paid).where(created_at: target_date)posts.each do |post|next if stuff_ids.include?(post.user_id)comment_count += post.comments.sizeend
+    ``` ruby# goodposts = Post.joins(:user).merge(User.paid).where(created_at: target_date)posts.each do |post|next if stuff_ids.include?(post.user_id)comment_count += post.comments.sizeend
 
     # badposts = Post.joins(:user).merge(User.paid).where(created_at: target_date).each do |post|next if stuff_ids.include?(post.user_id)comment_count += post.comments.sizeend```
 
 - **[SHOULD]** 식이 완결되지 않고 줄바꿈이 이루어질 때는 줄바꿈된 줄부터는 이전의 행보다 한 단계 더 들여쓴다.
 
-    ```ruby# goodUser.active.
+    ``` ruby# goodUser.active.
 some_scope(foo).
 other_scope(bar)
 
@@ -57,7 +57,7 @@ other_scope(bar)```
 - **[SHOULD]** 루비 2.0 부터 기본 인코딩이 UTF-8이므로 인코딩 지정을 위한 별도의 매직 코멘트는 사용하지 않는다.
 - **[MUST]** 매직 코멘트를 사용해야 할 때는 아래 형식을 사용한다.
 
-    ```ruby# coding: utf-8```
+    ``` ruby# coding: utf-8```
 
 <a name="line-columns"></a>
 
@@ -87,9 +87,9 @@ other_scope(bar)```
 - **[MUST]** 문자열 안에서 이스케이프 시켄스가 최소화될 수 있도록 적절한 구분문자열을 선택한다.
 - **[SHOULD]** `%` 문법으로 문자열 리터럴을 사용할 때는 괄호를 구분 문자열로 사용한다.이 때 괄호의 종류는 어떤 걸 사용해도 무방하며, 아래와 같은 특별한 경우에는 괄호 이외에 다른 기호들을 구분자로 사용한다.
 
-    ```rubyOPEN_PARENTHESES = %!({[!```
+    ``` rubyOPEN_PARENTHESES = %!({[!```
 
-- **[MUST]** 문자열 보간을 사용할 때 단지 `Object#to_s`를 호출하지 않는다.예) `"#{obj.to_s}"` -> `obj.to_s`- **[MUST]** 문자열 보간을 사용할 때 중괄호를 생략할 수 있는 경우가 있지만, 생략하지 않고 반드시 중괄호를 사용한다.
+- **[MUST]** 문자열 보간을 사용할 때 단지 `Object#to_s`를 호출하지 않는다.たとえばこういうの→`"#{obj.to_s}"`。- **[MUST]** 문자열 보간을 사용할 때 중괄호를 생략할 수 있는 경우가 있지만, 생략하지 않고 반드시 중괄호를 사용한다.
 - **[SHOULD]** (Ruby 1.9+) Unicode 문자를 이스케이스 시켄스로 입력할 때는 `"\xE3\x8C\xB3"` 방식이 아니라 `"\u{3333}"`와 같이 `\u`를 사용한다.루비 1.8 버전을 지원해야하는 스크립트라면 적용하지 않는다.
 - **[SHOULD]** 루프에서 문자열 리터럴을 사용하지 말 것.여기서 루프란 `while`, `until`, `for`을 비롯해 `each`와 같은 블록을 사용하는 반복자 표현을 의미한다.
 - **[SHOULD]** 문자열 리터럴들을 `String#+` 메소드를 사용해서 연결하지 않는다.문자열 보간법을 사용한다.
@@ -109,7 +109,7 @@ other_scope(bar)```
 
 - **[MUST]** 배열 리터럴을 여러 줄로 작성할 때는 `[`와 첫번째 요소 사이에 하나의 공백을 두고 요소들의 들여쓰기를 맞춘다.
 
-    ```ruby# good[ :foo,:bar,:baz]
+    ``` ruby# good[ :foo,:bar,:baz]
 
     # bad[:foo,:bar,:baz]```
 
@@ -126,7 +126,7 @@ other_scope(bar)```
 - **[SHOULD]** 여러줄로 된 배열 리터럴을 사용할 때는 마지막 요소 다음에도 `,`를 입력한다.
 - **[SHOULD]** 문자열로만 구성된 배열을 만들 때는 `%w(...)`이나 `%W(...)` 문법을 사용한다.
 
-    ```ruby# goodwords = %w(foo bar baz)
+    ``` ruby# goodwords = %w(foo bar baz)
 
     # badwords = ['foo', 'bar', 'baz']```
 
@@ -135,7 +135,7 @@ other_scope(bar)```
 - **[SHOULD]** 같은 요소를 `n` 개 가진 배열을 초기화할 때는 `Array.new(n, obj)`을 사용한다.`[obj] * n` 을 사용하지 않는다.
 - **[SHOULD]** 범위(Range) 리터럴을 배열로 변환할 때는 `Range#to_a` 메소드를 사용하지 않고, `[*range]` 표현을 사용한다.
 
-    ```ruby# good[*1..10]  #=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    ``` ruby# good[*1..10]  #=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     # bad(1..10).to_a  #=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]```
 
@@ -145,20 +145,20 @@ other_scope(bar)```
 
 - **[MUST]** 해시 리터럴을 한 줄에 작성할 때는 `{` 와 첫번째 요소 사이와 마지막 요소와 `}` 사이에 각각 하나의 공백을 넣는다.
 
-    ```ruby# good{ hoge: 1, fuga: 2 }# bad{hoge: 1, fuga: 2}```
+    ``` ruby# good{ hoge: 1, fuga: 2 }# bad{hoge: 1, fuga: 2}```
 
 - **[MUST]** 해시 리터럴에서 Symbol을 key로 사용할 때 HashRocket(Ruby 1.8에서 사용되던 `=>`을 사용한 표현. 예: `{ :foo => 42 }`)문법을 사용하지 않는다.
 
-    ```ruby# good{ first: 42,second: 'foo',}# bad{ :first => 42,:second => 'foo',}```
+    ``` ruby# good{ first: 42,second: 'foo',}# bad{ :first => 42,:second => 'foo',}```
 
 - **[SHOULD]** 해시 리터럴의 key가 symbol이지만 `.`, `-`와 같은 기호를 사용할 때는 HashRokcet 문법만 사용한다.
 
-    ```ruby# good{ :cookpad => 42,:'cookpad.com' => 'foo',}# bad{ cookpad: 42,:'cookpad.com' => 'foo',}```
+    ``` ruby# good{ :cookpad => 42,:'cookpad.com' => 'foo',}# bad{ cookpad: 42,:'cookpad.com' => 'foo',}```
 
 - **[MUST]** 빈 해시는 `{}`를 사용한다.
 - **[MUST]** 해시만 따로 여러줄에 걸쳐서 작성할 때는 `{` 다음에 바로 첫번째 요소를 입력하고, 두번째 요소부터는 한 단계 들여쓰기 한다. `}`는 별도의 행에 작성하고, `{`를 입력한 줄의 앞부분과 들여쓰기를 맞춘다.
 
-    ```ruby# good{ first: 42,second: 'foo',}
+    ``` ruby# good{ first: 42,second: 'foo',}
 
     # bad{first: 42,second: 'foo',}
 
@@ -166,7 +166,7 @@ other_scope(bar)```
 
 - **[MUST]** 대입식에서 해시 리터럴을 여러 줄에 걸쳐서 작성할 때는 `{` 뒤에서 줄바꿈하고 각 요소들은 한단계 들여쓰기해서 작성한다. `}`는 별도의 줄에 입력하고 `{`을 입력한 줄의 앞부분과 들여쓰기를 맞춘다.
 
-    ```ruby# goodhash = {first: 42,second: 'foo',}
+    ``` ruby# goodhash = {first: 42,second: 'foo',}
 
     # badhash = { first: 42,second: 'foo',}
 
@@ -179,7 +179,7 @@ other_scope(bar)```
 - **[SHOULD]** 여러 줄로 걸쳐 해시 리터럴을 작성할 때는 마지막 요소 다음에도 `,`를 넣는다.
 - **[SHOULD]** 심볼이 문자열보다 검색 속도가 더 빠르므로, 해키 키로는 문자열보다 심볼을 사용한다.
 
-  ```ruby# good{ foo: 1, bar: 2 }
+  ``` ruby# good{ foo: 1, bar: 2 }
 
   # bad{ 'foo' => 1, 'bar' => 2 }```
 
@@ -193,7 +193,7 @@ other_scope(bar)```
 - **[MUST]** 조건 연산자를 중첩적으로 사용하지 않는다.
 - **[MUST]** 조건 연산자를 여러줄에 작성하지 않는다.
 
-    ```ruby# goodfizzbuzz = if n % 3 == 0n % 5 == 0 ?'fizzbuzz' : 'fizz'elsen % 5 == 0 ?'buzz' : "#{n}"end
+    ``` ruby# goodfizzbuzz = if n % 3 == 0n % 5 == 0 ?'fizzbuzz' : 'fizz'elsen % 5 == 0 ?'buzz' : "#{n}"end
 
     # badfizzbuzz = n % 3 == 0 ?(n % 5 == 0 ?'fizzbuzz' : 'fizz') : (n % 5 == 0 ?'buzz' : "#{n}")
 
@@ -222,7 +222,7 @@ other_scope(bar)```
 - **[SHOULD]** 조건식이 여러줄로 길어질 때는 조건을 별도의 메소드로 추출하고 적절한 이름을 붙여 사용한다.
 - **[MUST]** 대입식에서 제어구조를 사용해야할 때는 본문 코드를 2단계 들여쓰고 마지막 `end`는 본문보다 한단계 덜 들여쓴다.
 
-    ```ruby# goodresult = if conditionbody_codeend
+    ``` ruby# goodresult = if conditionbody_codeend
 
     # goodresult =if conditionbody_codeend
 
@@ -247,14 +247,14 @@ other_scope(bar)```
 - **[MUST]** 메소드 이름과 메소드 호출을 의미하는 괄호 사이에는 공백을 넣지 않는다.
 - **[SHOULD]** 인자 마지막에 해시 리터럴을 사용할 때는 해시 리터럴 괄호를 생략한다.
 
-    ```ruby# goodfoo(1, 2, foo: :bar, baz: 42)
+    ``` ruby# goodfoo(1, 2, foo: :bar, baz: 42)
 
     # badfoo(1, 2, { foo: :bar, baz: 42 })```
 
 - **[MUST]** 블록의 리턴값이 의미를 가지지 않는 메소드를 호출할 때는 `do`/`end` 방식으로 블록을 사용한다.예) 부작용을 목적으로 하는 블록.
 - **[MUST]** 블록의 리턴값이 의미를 가지는 메소드를 호출할 때는 중괄호를 사용해 블록을 사용한다.
 
-    ```ruby# goodputs [1, 2, 3].map {|i|i * i}
+    ``` ruby# goodputs [1, 2, 3].map {|i|i * i}
 
     # badputs [1, 2, 3].map do |i|i * iend
 
@@ -265,7 +265,7 @@ other_scope(bar)```
 - **[MUST]** 블록을 사용하는 메소드 호출을 한 줄로 작성할 때는 중괄호를 사용한다.
 - **[MUST]** `do`/`end`를 사용할 때는 `do 앞뒤로 공백을 넣으며, 블록 인자 뒤에 줄바꿈을 넣고 `end`는 독립된 행으로 작성한다.블록 본문은 한 단계 들여쓰며 `end`의 들여쓰기는 메소드를 호출하는 첫 행에 맞춘다.
 
-    ```ruby# good[1, 2, 3].each do |num|puts numend
+    ``` ruby# good[1, 2, 3].each do |num|puts numend
 
     # bad[1, 2, 3].each do |num|puts numend
 
@@ -276,7 +276,7 @@ other_scope(bar)```
 - **[MUST]** 중괄호를 사용하는 블록은 `{` 앞에 공백을 하나 사용한다.
 - **[MUST]** 중괄호를 사용하는 블록을 한 줄에 작성하는 경우 `{`이나 블록 인자와 본문 코드, 본문 코드와 `}` 사이에 공백을 하나씩 넣는다.
 
-    ```ruby# good[1, 2, 3].each {|num| puts num }[1, 2, 3].each { |num| puts num }
+    ``` ruby# good[1, 2, 3].each {|num| puts num }[1, 2, 3].each { |num| puts num }
 
     # bad[1, 2, 3].each {|num| puts num}
 
@@ -293,15 +293,15 @@ other_scope(bar)```
 - **[SHOULD]** 메소드를 호출할 때 인자가 길어지면 아래의 규칙에 따라 여러 줄에 나눠서 작성한다.
 - 인자가 길어지면 `(` 바로 다음에 줄바꿈을 넣고 다음 행부터 들여쓰기를 한 단계 깊게 한 행에 하나의 인자를 작성한다. 메소드 호출을 닫을 때는 들여쓰기를 첫 줄과 마찬가지로 하고 `)`를 별도의 줄에 작성한다.
 
-      ```rubyFoo.new(arg,long_argument,key: value,long_key: long_value,pretty_so_much_very_long_key:pretty_so_much_very_tooooooooooooooooooooo_long_value,)```
+      ``` rubyFoo.new(arg,long_argument,key: value,long_key: long_value,pretty_so_much_very_long_key:pretty_so_much_very_tooooooooooooooooooooo_long_value,)```
 
   - 인자가 짧을 때는 `(`에 이어서 첫번째 인자를 작성하고, 다음 줄부터는 들여쓰기을 첫번째 인자에 맞추서 인자들을 하나씩 작성한다. 메소드 호출을 마칠 때는 `)`을 마지막 인자 바로 다음에 적는다.
 
-      ```rubyFoo.new(arg,long_argument,key: value,long_key: long_value)```
+      ``` rubyFoo.new(arg,long_argument,key: value,long_key: long_value)```
 
   - DSL 메소드를 여러 줄에 걸쳐서 작성할 때는 첫번째 인수를 메소드 이름 바로 뒤에 적고, 다음 줄부터 들여쓰기를 한단계 깊게 인수를 한 줄에 하나씩 작성한다.
 
-      ```rubyActionMailer::Base.delivery_method :smtp,host: 'localhost',port: 25```
+      ``` rubyActionMailer::Base.delivery_method :smtp,host: 'localhost',port: 25```
 
 <a name="begin-and-end"></a>
 
@@ -317,19 +317,19 @@ other_scope(bar)```
 - **[MUST]** `attr`을 사용하지 말고 `attr_accessor`, `attr_reader`, `attr_writer`을 사용한다.
 - **[MUST]** 클래스 메소드를 정의할 때는 의미없이 들여쓰기가 깊어지지 않도록 `self.` 문법을 사용한다.하지만 private 메소드와 public 메소드를 모두 사용할 때는 `class << self` 를 사용해도 무방하다.
 
-    ```rubyclass Foo# gooddef self.fooend
+    ``` rubyclass Foo# gooddef self.fooend
 
       # baddef Foo.fooendend```
 
 - **[MUST]** private와 protected 클래스 메소드를 정의할 때는 `class << self` / `end` 안에서 메소드를 정의하고 가시성을 변경한다.
 
-   ```rubyclass Foo# goodclass << selfdef fooendprivate :fooend
+   ``` rubyclass Foo# goodclass << selfdef fooendprivate :fooend
 
       # baddef self.fooendclass <<selfprivate :fooendend```
 
 - **[MUST]** 메소드가 정의되어있을 때 메소드 이름을 인수로 `private`나 `protected`나 `public` 메소드를 호출해 메소드의 가시성을 변경할 때는 메소드 정의와 가시성 변경 메소드 사이에 빈 줄을 두지 않는다.
 
-    ```rubyclass Foo# gooddef fooendprivate :foo
+    ``` rubyclass Foo# gooddef fooendprivate :foo
 
       # baddef fooend
 
@@ -337,7 +337,7 @@ other_scope(bar)```
 
 - **[MUST]** `private`나 `protected`나 `public`을 인수 없이 사용할 때는 들여쓰기를 메소드 정의와 같게 하고 메소드 호출 앞뒤로 한 줄을 띄워준다.
 
-    ```ruby# goodclass Foodef fooend
+    ``` ruby# goodclass Foodef fooend
 
       private
 
@@ -376,7 +376,7 @@ other_scope(bar)```
 - **[MUST]** 하나의 메소드로 여러가지 일을 하지 않는다.
 - **[MUST]** 인수를 삭제하지 않는다.
 
-    ```ruby# gooddef your_method(str)new_str = str.sub('xxx', 'yyy')end
+    ``` ruby# gooddef your_method(str)new_str = str.sub('xxx', 'yyy')end
 
     # baddef your_method(str)str.sub!('xxx', 'yyy')end```
 
@@ -392,4 +392,4 @@ other_scope(bar)```
 
 ## 이 외(분류하기 어려운 규칙)
 
-- **[MUST]** 파괴적인 메소드를 사용할 때는 그 영향 범위를 최소한으로 한정한다.
+- **[MUST]** 파괴적인 메소드를 사용할 때는 그 영향 범위를 최소한으로 만든다.
